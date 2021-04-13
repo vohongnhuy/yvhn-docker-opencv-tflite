@@ -1,1 +1,14 @@
+cffi==1.14.5
+colorama==0.4.4
+cryptography==3.4.7
+importlib-metadata==3.10.0
+jeepney==0.6.0
+keyring==23.0.1
+numpy==1.20.2
+pycparser==2.20
+pyftpsync==3.1.0
+PyYAML==5.4.1
+SecretStorage==3.3.1
 tflite-runtime @ https://github.com/google-coral/pycoral/releases/download/v1.0.1/tflite_runtime-2.5.0-cp37-cp37m-linux_armv7l.whl
+typing-extensions==3.7.4.3
+zipp==3.4.1

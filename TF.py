@@ -38,7 +38,7 @@ class FTPUploadImg:
         self.filenameuploadFTP = filenameupload
         self.upload()
     def upload(self):
-        pathimg = "~/tfliteapp/imgout"
+        pathimg = "/tmp/yvhn-imgout"
         os.chdir(pathimg)
         ftp = ftplib.FTP()
         ftp.connect('115.73.211.189', 50021)
@@ -246,8 +246,10 @@ while True:
             
             # Save frame to image if object is person
             if (object_name == 'person'):
-                pathimg = "~/tfliteapp/imgout"
-                os.chdir(pathimg)
+                newpathimg = "/tmp/yvhn-imgout" 
+                if not os.path.exists(newpathimg):
+                    os.makedirs(newpathimg)
+                os.chdir(newpathimg)
                 dt = time.time()
                 struct_now = time.localtime(dt)
                 mlsec = repr(dt).split('.')[1][:3]

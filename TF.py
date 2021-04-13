@@ -38,7 +38,7 @@ class FTPUploadImg:
         self.filenameuploadFTP = filenameupload
         self.upload()
     def upload(self):
-        pathimg = "/home/pi/Projects/Python/tflite/object_detection/imgout"
+        pathimg = "~/tfliteapp/imgout"
         os.chdir(pathimg)
         ftp = ftplib.FTP()
         ftp.connect('115.73.211.189', 50021)
@@ -184,7 +184,7 @@ videostream = VideoStream(resolution=(imW,imH),framerate=30).start()
 time.sleep(1)
 
 # Create window
-cv2.namedWindow('Object detector', cv2.WINDOW_NORMAL)
+# cv2.namedWindow('Object detector', cv2.WINDOW_NORMAL)
 
 #for frame1 in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):
 while True:
@@ -226,27 +226,27 @@ while True:
             ymax = int(min(imH,(boxes[i][2] * imH)))
             xmax = int(min(imW,(boxes[i][3] * imW)))
             
-            cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
+            # cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 2)
             
             # Draw label
             object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
             label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
             labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
             label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
-            cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
-            cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
+            # cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
+            # cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
 
             # Draw circle in center
             xcenter = xmin + (int(round((xmax - xmin) / 2)))
             ycenter = ymin + (int(round((ymax - ymin) / 2)))
-            cv2.circle(frame, (xcenter, ycenter), 5, (0,0,255), thickness=-1)
+            # cv2.circle(frame, (xcenter, ycenter), 5, (0,0,255), thickness=-1)
 
             # Print info
-            print('Object ' + str(i) + ': ' + object_name + ' at (' + str(xcenter) + ', ' + str(ycenter) + ')')
+            # print('Object ' + str(i) + ': ' + object_name + ' at (' + str(xcenter) + ', ' + str(ycenter) + ')')
             
             # Save frame to image if object is person
             if (object_name == 'person'):
-                pathimg = "/home/pi/Projects/Python/tflite/object_detection/imgout"
+                pathimg = "~/tfliteapp/imgout"
                 os.chdir(pathimg)
                 dt = time.time()
                 struct_now = time.localtime(dt)
@@ -257,10 +257,10 @@ while True:
                 Thread(target=FTPUploadImg,args=(imgfilename,)).start()
 
     # Draw framerate in corner of frame
-    cv2.putText(frame,'FPS: {0:.2f}'.format(frame_rate_calc),(30,50),cv2.FONT_HERSHEY_SIMPLEX,1,(255,255,0),2,cv2.LINE_AA)
+    # cv2.putText(frame,'FPS: {0:.2f}'.format(frame_rate_calc),(30,50),cv2.FONT_HERSHEY_SIMPLEX,1,(255,255,0),2,cv2.LINE_AA)
 
     # All the results have been drawn on the frame, so it's time to display it.
-    cv2.imshow('Object detector', frame)
+    # cv2.imshow('Object detector', frame)
 
     # Calculate framerate
     t2 = cv2.getTickCount()
@@ -268,9 +268,9 @@ while True:
     frame_rate_calc= 1/time1
 
     # Press 'q' to quit
-    if cv2.waitKey(1) == ord('q'):
-        break
+    # if cv2.waitKey(1) == ord('q'):
+      #  break
 
 # Clean up
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows()
 videostream.stop()

@@ -5,7 +5,6 @@ importlib-metadata==3.10.0
 jeepney==0.6.0
 keyring==23.0.1
 numpy==1.20.2
-opencv-contrib-python==4.1.0.25
 pycparser==2.20
 pyftpsync==3.1.0
 PyYAML==5.4.1

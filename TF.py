@@ -242,7 +242,7 @@ while True:
             # cv2.circle(frame, (xcenter, ycenter), 5, (0,0,255), thickness=-1)
 
             # Print info
-            # print('Object ' + str(i) + ': ' + object_name + ' at (' + str(xcenter) + ', ' + str(ycenter) + ')')
+            print('Object ' + str(i) + ': ' + object_name + ' at (' + str(xcenter) + ', ' + str(ycenter) + ')')
             
             # Save frame to image if object is person
             if (object_name == 'person'):

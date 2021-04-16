@@ -19,6 +19,7 @@
 # Added ability to resize cv2 window and added center dot coordinates of each detected object.
 # Objects and center coordinates are printed to console.
 
+# Edited by yvhn date 16/04/2021
 # Import packages
 import os
 import argparse

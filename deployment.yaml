@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfliteapp
+spec:
+  selector:
+    matchLabels:
+      app: tfliteapp
+  template:
+    metadata:
+      labels:
+        app: tfliteapp
+    spec:
+      containers:
+      - name: tfliteapp
+        image: tfliteapp:lastest
+        imagePullPolicy: "IfNotPresent"
+        resources:
+          limits:
+            smarter-devices/video0: 20
+            smarter-devices/video10: 20
+            smarter-devices/video11: 20
+            smarter-devices/video12: 20
+            smarter-devices/video13: 20
+            smarter-devices/video14: 20
+            smarter-devices/video15: 20
+            smarter-devices/video16: 20
+          requests:
+            smarter-devices/video0: 20
+            smarter-devices/video10: 20
+            smarter-devices/video11: 20
+            smarter-devices/video12: 20
+            smarter-devices/video13: 20
+            smarter-devices/video14: 20
+            smarter-devices/video15: 20
+            smarter-devices/video16: 20
+
